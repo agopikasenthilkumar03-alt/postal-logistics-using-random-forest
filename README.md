@@ -30,12 +30,18 @@ pip install -r requirements.txt
 
 ### Run the API
 ```bash
-uvicorn app.main:app --reload
+python -m uvicorn app.main:app --reload
 ```
 
 ### Train the Random Forest Model
 ```bash
 PYTHONPATH=backend python backend/scripts/train_model.py --data backend/data/sample_delivery_history.csv
+```
+
+### Optional: scikit-learn install (Windows users)
+If you need scikit-learn locally, install a prebuilt wheel instead of building from source:
+```bash
+pip install --only-binary=:all: scikit-learn==1.5.0 joblib==1.4.2
 ```
 
 ## Frontend Setup
