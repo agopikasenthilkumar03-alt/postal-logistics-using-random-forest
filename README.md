@@ -25,8 +25,39 @@ frontend/
 cd backend
 python -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
 ```
+
+### Windows: use a compatible Python and activate the venv
+FastAPI + Pydantic v1 do **not** support Python 3.13. Use Python **3.8–3.12**.
+
+**Command Prompt (cmd.exe)**
+```cmd
+cd backend
+py -3.8 -m venv .venv
+.\.venv\Scripts\activate.bat
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+```
+
+**PowerShell**
+```powershell
+cd backend
+py -3.8 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
+python -m uvicorn app.main:app --reload
+```
+
+**Verify you're using the venv (important on Windows)**
+```cmd
+where python
+python --version
+```
+You should see the `.venv` path first and a Python version between 3.8 and 3.12.
 
 ### Run the API
 ```bash
